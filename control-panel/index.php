@@ -1,3 +1,11 @@
+<?php 
+      
+      include '../config/config.php';
+      session_start();
+      if (isset($_GET['logout'])) {
+          session_destroy();
+             echo "<script> alert('Anda Yakin Ingin Keluar'); location.href='../index.php' </script>";exit;}
+ ?>
 <!DOCTYPE html>
 <html>
 
@@ -7,7 +15,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>SPK-BEASISWA | Dashboard</title>
+    <title>SPK-BEASISWA | Dashboard <?php echo $_SESSION['access_control']; ?></title>
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
@@ -16,6 +24,7 @@
 
     <link href="css/animate.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+    <link href="css/plugins/dataTables/datatables.min.css" rel="stylesheet">
 
 </head>
 
@@ -25,10 +34,18 @@
 
         <div id="page-wrapper" class="gray-bg dashbard-1">
        
-            <?php include 'menuatas.php'; ?>
-            
+           
+             <?php 
+          if(empty( $_GET['hal']) ||  $_GET['hal'] ==""){
+          $_GET['hal'] = "konten-tengah.php";
+          }
+          if(file_exists( $_GET['hal'].".php")){
+          include  $_GET['hal'].".php";
+          }else {
+          include"konten-tengah.php";
+          }   
        
-            <?php include 'konten-tengah.php'; ?>
+            ?>
             
         </div>
     </div>
@@ -51,5 +68,11 @@
     <script src="js/demo/sparkline-demo.js"></script>
     <script src="js/plugins/chartJs/Chart.min.js"></script>
     <script src="js/plugins/toastr/toastr.min.js"></script>
+     <script src="js/plugins/dataTables/datatables.min.js"></script>
+<script>
+        $(document).ready(function(){
+            $('.dataTables-example').DataTable({});
+        });
+    </script>
 </body>
 </html>

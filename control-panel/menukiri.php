@@ -6,42 +6,47 @@
                             <img alt="image" class="img-circle" src="logo/logo.png" style="width: 50px;" />
                              </span>
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">David Williams</strong>
-                             </span> <span class="text-muted text-xs block">Level <b class="caret"></b></span> </span> </a>
+                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold"><?php echo $_SESSION['access_username']; ?></strong>
+                             </span> <span class="text-muted text-xs block"><?php echo $_SESSION['access_control']; ?> <b class="caret"></b></span> </span> </a>
                             <ul class="dropdown-menu animated fadeInRight m-t-xs">
                                 <li><a href="profile.html">Setting</a></li>
                                 <li><a href="contacts.html">Ubah Passoword</a></li>
                                 <li class="divider"></li>
-                                <li><a href="login.html">Keluar</a></li>
+                                <li><a href="index.php?logout=1">Keluar</a></li>
                             </ul>
                         </div>
                         <div class="logo-element">
                             SPK
                         </div>
                     </li>
+                    <?php 
+                        if ($_SESSION['access_control']=='admin') {  
+                     ?>
                     <li>
                         <a href="index-2.html"><i class="fa fa-th-large"></i> <span class="nav-label">Master Data</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
-                            <li class="active"><a href="index-2.html">Master User</a></li>
-                            <li><a href="dashboard_2.html">Master Siswa</a></li>
-                            <li><a href="dashboard_3.html">Master Kriteria</a></li>
-                            <li><a href="dashboard_4_1.html">Master Subkriteria</a></li>
+                            <li class="active"><a href="index.php?hal=master/user/list">Master User</a></li>
+                            <li><a href="index.php?hal=master/students/list">Master Siswa</a></li>
+                            <li><a href="index.php?hal=master/criteria/list">Master Kriteria</a></li>
+                            <li><a href="index.php?hal=master/subcriteria/list">Master Subkriteria</a></li>
                             
                         </ul>
                     </li>
-                   
+                     <?php } ?>
                     <li>
                         <a href="#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Perhitungan AHP</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse">
-                            <li><a href="graph_flot.html">Kriteria</a></li>
+                            <li><a href="index.php?hal=penilaian/criteria_penilaian/list">Kriteria</a></li>
                             <li><a href="graph_morris.html">SubKriteria</a></li>
                            
                         </ul>
                     </li>
+             
                  
                     <li>
                         <a href="metrics.html"><i class="fa fa-pie-chart"></i> <span class="nav-label">Penilaian</span>  </a>
                     </li>
+
                     <li>
                         <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Laporan</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse">

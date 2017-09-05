@@ -10,7 +10,7 @@
     <link href="control-panel/css/style.css" rel="stylesheet">
 </head>
 
-<body class="gray-bg" style="background-color: #26b7ec; color: white;">
+<body class="gray-bg" style="background-color: #26b7ec;">
 
     <div class="middle-box text-center loginscreen animated fadeInDown">
         <div>
@@ -21,12 +21,12 @@
             </div>
             <h3>SPK-BEASISWA SMA N</h3>
             <p>Login in. To see it in action.</p>
-            <form class="m-t" role="form" action="" method="POST">
+            <form class="m-t" role="form" action="config/proses_login.php" method="POST">
                 <div class="form-group">
-                    <input type="email" class="form-control" placeholder="Username" required="">
+                    <input type="text" class="form-control" placeholder="Username" required="" name="username">
                 </div>
                 <div class="form-group">
-                    <input type="password" class="form-control" placeholder="Password" required="">
+                    <input type="password" class="form-control" placeholder="Password" required="" name="password">
                 </div>
                 <button type="submit" class="btn btn-primary block full-width m-b">Login</button>
             </form>
